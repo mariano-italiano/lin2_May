@@ -1,0 +1,365 @@
+cat .vimrc
+echo "to jest test" 
+echo "to jest test" > plik.txt
+cat plik.txt 
+echo "to jest test" 1> plik.txt
+cat plik.txt 
+ls -la /root
+echo $? 
+cat plik.txt 
+echo $? 
+ls -la /root
+echo $? 
+ls -la /root 2> error.txt
+cat error.txt 
+ls -la /root > error2.txt
+cat error2.txt 
+ls -la /root > error2.txt 2>&1
+cat error2.txt 
+vi error.txt 
+sort 
+sort < error.txt 
+cat error.txt  | sort 
+cat error.txt  | sort | grep linia | awk '{print $2}'
+cat error.txt  | sort | grep linia
+cat error.txt  | sort | grep linia | awk '{print $2}' | cut -d "i" -f 1
+git clone https://github.com/mariano-italiano/lin2_May.git
+sudo dnf update
+sudo dnf repolist
+sudo dnf install git -y
+git clone https://github.com/mariano-italiano/lin2_May.git
+cd lin2_May/
+mkdir labs
+cd labs/
+vi lab1.sh
+./lab1.sh
+ls -la 
+source lab1.sh 
+cd lin2_May/labs/
+vi lab1.sh 
+source lab1.sh 
+source 
+source --help
+echo $TEST1
+vi %HOME/.bashrc
+cd
+vi .bashrc 
+echo $TEST1
+source .bashrc 
+echo $TEST1
+ls -la
+ls -lah
+cd backup/
+ls -la
+ls -la | wc -l
+ls -la /usr/bin/ | wc -l
+cd
+ls -la
+cd lin2_May/labs/
+ls -la
+less copy.log 
+less copy.log
+less copy.err 
+echo "To jest przyklad" | sed -n '/jest/p'
+sed --help 
+echo "To jest przyklad" | sed '/jest/p'
+vi test.txt
+sed '/przyklad/p' test.txt 
+sed -n '/przyklad/p' test.txt 
+grep przyklad test.txt 
+awk '/przyklad/{print $0}' test.txt 
+vi plik
+sed -n '/.sh/p' plik 
+vi plik 
+sed -n '/.sh/p' plik 
+vi plik 
+sed -n '/[cb]ash/p' plik 
+sed -n '/[a-zA-Z]/p' plik 
+sed -n '/[0-9]/p' plik 
+sed -n '/^[fF]oo/p' plik 
+sed -n '/^foo/p' plik 
+sed -n '/[^fo]/p' plik 
+sed -n '/[^fo]+/p' plik 
+awk '/[cb]ash/{print $0}' test.txt 
+awk '/[cb]ash/{print $0}' plik
+sed 's/foo/slowo/g' plik 
+vi plik 
+sed 's/foo/slowo/g' plik
+sed --help
+sed 's/foo/slowo/g' plik
+sed -i 's/foo/slowo/g' plik
+vi plik 
+sed 's/foo/slowo/g' plik
+sed 's/foo/slowo/gI' plik
+sed 's//bin/bash//bin/sh/gI' plik
+sed 's|/bin/bash|/bin/sh|gI' plik
+sed 's5/bin/bash5/bin/sh5gI' plik
+sed 's/\b[0-9]\{3\}\b/liczba 3-cyfrowa/g' plik
+sed 's/\b[0-9]\{3\}\b/liczba 3-cyfrowa &/g' plik
+grep --help
+cat plik 
+grep -i foo plik 
+alias 
+grep -v foo plik
+grep -v -i foo plik
+vi /etc/ssh/sshd_config
+sudo vi /etc/ssh/sshd_config
+sudo grep -v "#" /etc/ssh/sshd_config 
+sudo grep -v "#" /etc/ssh/sshd_config | tr -d "\n"
+sudo grep -v "#" /etc/ssh/sshd_config | tr -s '\n'
+sudo grep -i error /var/log/messages -B 5 -A 2 
+sudo grep -i error /var/log/messages -B 5 -A 2 --color=auto
+sudo -i
+sudo grep -i error /var/log/messages -B 5 -A 2 
+sudo grep -i error /var/log/messages -B 5 -A 2 --color=auto
+sudo vi /etc/passwd
+sudo grep :/home/.*: /etc/passwd
+sudo grep :/home/.*: /etc/passwd --color=auto
+useradd -m testuser
+sudp useradd -m testuser
+sudouseradd -m testuser
+sudo useradd -m testuser
+sudo grep :/home/.*: /etc/passwd --color=auto
+sudo grep ^root /etc/passwd --color=auto
+sudo grep $USER /etc/passwd --color=auto
+sudo grep nologin$ /etc/passwd --color=auto
+sudo grep nologin$ /etc/passwd --color=auto | wc -l
+sudo grep sh$ /etc/passwd --color=auto | wc -l
+sudo grep sh$ /etc/passwd --color=auto 
+sudo grep -e student -e student2 -e student3 /etc/passwd
+sudo grep -e student -e student2 -e root /etc/passwd
+sudo grep -e ^student -e ^student2 -e ^root /etc/passwd
+sudo grep -E 'student|testuser' /etc/passwd
+sudo grep -E '[a-z]' /etc/passwd
+grep -E '[bc]ash' plik 
+vi wina.txt
+mv wina.txt wina.csv
+cat wina.csv 
+grep Fra wina.csv | awk -F "," '{print $1 "," $3 "," $4}'
+grep -v Fra | wc -l 
+grep -v Fra | wc -l wina.csv 
+grep -v Fra wina.csv | wc -l
+echo -n "Win innych niz z Francji jest: "; grep -v Fra wina.csv | wc -l
+sed '2,3s/wytrawne/półwytrawne/g' wina.csv 
+sed '5i/Nowe wino z Polski,Pol,czerwone wytrawne,34.99' wina.csv 
+sed '5a\Nowe wino z Polski,Pol,czerwone wytrawne,34.99' wina.csv 
+sed '5i\Nowe wino z Polski,Pol,czerwone wytrawne,34.99' wina.csv 
+ps -ef
+ps -ef | awk '{print $8 }'
+ps -ef | awk '{print $8 }'| grep -i gdm
+man tar
+tar -h
+tar --help
+tar --help | grep -J
+tar --help | grep "-J"
+tar --help | grep "J"
+tar --help | grep "J" -A 5 -B 5
+wget blob:https://en.greenconvert.net/fa7317f0-3b4e-4c50-9a6a-00f9d71c93ac
+wget https://en.greenconvert.net/fa7317f0-3b4e-4c50-9a6a-00f9d71c93ac
+ls -lah
+cd
+ls -la 
+mv NIECHCIANY\ TELEFON.mp4 NIECHCIANY_TELEFON.mp4 
+ls -la
+ls -lah
+tar cvf logs.tar  error2.txt error.txt
+ls -la
+ls -lah
+tar zcvf test-gzip.gz NIECHCIANY_TELEFON.mp4 
+ls -lah
+tar jcvf test-bzip.bz2 NIECHCIANY_TELEFON.mp4 
+ls -lah
+tar Jcvf test-xz.xz NIECHCIANY_TELEFON.mp4 
+ls -lah
+tar czvf binaries.gz /usr/bin/
+df -h
+ls -alh
+tar czvf binaries.gz /usr/bin/
+sudo tar czvf binaries.gz /usr/bin/
+sudo tar jcvf binaries.bz2 /usr/bin/
+sudo tar Jcvf binaries.xz /usr/bin/
+ls -lah
+sudo du -sh /usr/
+sudo du -sh /usr/bin
+rm NIECHCIANY_TELEFON.mp4 
+ls -la
+tar xvf test-bzip.bz2
+ls -la
+rm NIECHCIANY_TELEFON.mp4 
+tar xvf test-xz.xz
+ls -al
+rm NIECHCIANY_TELEFON.mp4 
+ls -la
+tar tvf test-gzip.gz
+ls -la
+ls -lah
+gzip --help
+ls -al
+tar xvf test-gzip.gz
+ls -la 
+gzip -k -9 NIECHCIANY_TELEFON.mp4
+ls -la 
+rm NIECHCIANY_TELEFON.mp4.gz 
+gzip -9 NIECHCIANY_TELEFON.mp4
+ls -la 
+gzip -k -9 --help
+man gzip
+gzip -ck -9 /usr/bin/ > test-binaries.gz 
+gzip -ckr -9 /usr/bin/ > test-binaries.gz 
+xz --help
+bzip2 --help
+mkdir backup
+cd backup/
+ls -la
+cd ..
+mkdir backup-lab2
+cd backup-lab2/
+tar zcvf /home/student/backup-lab2/include.tar.gz /usr/include/
+ls -la /usr/include/
+tar tvf /home/student/backup-lab2/include.tar.gz
+cd 
+mkdir restore
+cd restore/
+tar xvf ~/backup-lab2/include.tar.gz 
+ls -la
+cd usr/
+ls -la
+cd include/
+ls -la
+cd ..
+ls -la
+tree 
+diff /usr/include/ ../usr/
+cd ..
+diff /usr/include/ restore/usr/include/ 
+which tar
+which gzip
+nmap
+sudo dnf install nmap
+nmap 192.168.1.0/24
+nmap 192.168.1.90/24
+nmap 192.168.1.90/32
+nmap 192.168.1.41/32
+nmap 192.168.1.90/32
+ethtool -S ens33 
+ip -s link
+netstat -vatnulp 
+netstat --help
+netstat -vatnulp 
+sudo dnf install nginx -y
+sudo systemctl start nginx.service 
+sudo netstat -vatnulp 
+sudo dnf install net-tools
+sudo netstat -vatnulp 
+sudo ss -alnptu
+sudo ss -alntu
+sudo tcpdump -i ens33 
+sudo tcpdump -i ens33 tcp port 80
+sudo tcpdump -i ens33 dst 192.168.1.90 -w traffic-c9.pcap 
+vi traffic-c9.pcap 
+sudo dnf install wireshark -y
+cat /proc/cpuinfo 
+cat /proc/meminfo 
+cat /proc/mounts 
+mount 
+iostat
+sudo dnf install sysstat
+sudo dnf provides sar
+iostat 
+uptime
+iostat --help
+ watch iostat
+ watch -n1  iostat
+netstat -i 
+ip -s link
+vmstat 3
+vmstat 1
+sar
+sudo systemctl status sysstat
+sudo systemctl start sysstat
+sar
+sar -A
+sudo vi /etc/cron.d/0hourly 
+sar -A
+sudo vi /etc/default/sysstat
+sar -A
+sar -W
+sudo systemctl status sysstat
+sudo vi /usr/lib/systemd/system/sysstat.service
+sudo vi /usr/lib/systemd/system/sysstat-collect.timer 
+sudo systemctl restart sysstat-collect.timer 
+sudo systemctl daemon-reload
+sudo systemctl restart sysstat-collect.timer 
+sudo systemctl restart sysstat
+sar -A
+sar -h
+sar --help
+sar -m 
+sar -m  ALL
+sar -B
+sar -B 3 3 
+sar -B 3 5
+sar -b
+sar -W
+sar -q
+sar --help
+sar -q ALL
+free -m
+top
+sudo dnf isntall htop
+sudo dnf install htop
+sudo dnf install epel-release
+sudo dnf install htop
+htop
+free -m
+cd /var/log/
+ls -la
+less messages 
+sudo less messages 
+sudo grep "May 26" messages | grep init
+sudo grep "May 26" messages | grep systemd
+sudo grep "May 26" messages | grep =1
+ls -la
+less secure 
+sudo less secure 
+cd audit/
+sudo cd audit/
+sudo -i
+cd
+sudo dnf install tuned
+sudo systemctl status tuned
+sudo systemctl start tuned
+sudo systemctl status tuned
+tuned-adm active
+tuned-adm list
+tuned-adm profile_info throughput-performance
+tuned-adm profile_info latency-performance
+tuned-adm profile_info optimize-serial-console
+tuned-adm profile throughput-performance
+sudo tuned-adm profile throughput-performance
+tuned-adm active
+sudo sysctl -a > kernel_performance
+vi kernel_performance
+tuned-adm  recommend 
+tuned-adm profile virtual-guest
+sudo tuned-adm profile virtual-guest
+tuned-adm active
+sudo sysctl -a > kernel_vg
+diff kernel_vg kernel_performance 
+atop
+sudo dnf install atop
+atop
+nmon
+sudo dnf install stress-ng
+stress-ng --help
+stress-ng --cpu 8 --iomix 4 --vm 2 --vm-bytes 128M --fork 4 --timeout 60 &
+htop
+sudo htop
+stress-ng --cpu 8 --iomix 4 --vm 2 --vm-bytes 128M --fork 4 --timeout 30 &
+sudo htop
+stress-ng --cpu 8 --iomix 4 --vm 2 --vm-bytes 256M --fork 4 --timeout 30 &
+sudo htop
+cd lin2_May/
+ls
+history
+history | awk '$1 > 27' | cut -c 8- > day1-history.txt
