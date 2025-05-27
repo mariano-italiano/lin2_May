@@ -9,6 +9,11 @@
 7. Montujemy zasób (`mount <device> <mountpoint`).
 8. Edytujemy i dodajemy wpis do `/etc/fstab` !!!
 
+## Konwencja nazewnicza 
+
+1. **/dev/<vg-name>/<lv-name>**
+2. **/dev/mapper/<vg-name>-<lv-name>**
+
 ## Useful commands
 
 ```sh
