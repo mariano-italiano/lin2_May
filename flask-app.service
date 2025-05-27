@@ -1,0 +1,13 @@
+[Unit]
+Description=My Python Info Web Server for testing Services 
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/student/flask-app.py
+WorkingDirectory=/home/student
+Restart=always
+User=student
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target 

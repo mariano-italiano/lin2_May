@@ -73,3 +73,186 @@ at -c 5
 at -c 1
 history 
 history | awk '$1 > 407' | cut -c 8- > lin2_May/day2-history.txt
+cd lin2_May/
+statusit 
+git status
+git add .
+git commit -m "add day2 hisotry file 
+"
+git push
+sudo reboot
+sudo -i /etc/default/grub
+sudo -i
+sudo systemctl get-default 
+sudo systemctl set-default multi-user.target 
+sudo systemctl isolate multi-user.target 
+sudo systemctl isolate graphical.target 
+sudo init 3
+sudo init 5
+sudo systemctl get-default
+sudo systemctl isolate graphical.target 
+sudo systemctl set-default graphical.target 
+ls -la /lib/systemd/system/runlevel*.target
+/usr/lib/systemd/system/runlevel*.target
+sudo ls -la /usr/lib/systemd/system/runlevel*.target
+sudo systemctl list-units 
+sudo systemctl list-units --type target
+sudo systemctl list-units --type target --all
+sudo systemctl list-units --type service --state=running
+sudo systemctl list-units --type service
+sudo systemctl list-unit-files --state=enabled
+sudo systemctl status sshd
+sudo systemctl status chronyd
+sudo systemctl stop chronyd.service 
+sudo systemctl status chronyd
+sudo systemctl start chronyd
+sudo systemctl status chronyd
+sudo systemctl disable --now chronyd
+sudo systemctl status chronyd
+sudo systemctl enable chronyd
+sudo systemctl status chronyd
+sudo systemctl start chronyd
+sudo systemctl status chronyd
+sudo systemctl status nginx
+sudo systemctl list-units
+sudo systemctl list-units --type path
+sudo systemctl list-units --type service
+vi flask-app.py
+python3 flask-app.py
+systemctl status sshd
+sudo cp -rp /usr/lib/systemd/system/sshd.service /etc/systemd/system/flask-app.service
+sudo vi /etc/systemd/system/flask-app.service
+sudo systemctl status flas-app
+sudo systemctl daemon-reload 
+sudo systemctl status flas-app
+sudo systemctl status flask-app
+sudo systemctl start flask-app.service 
+sudo systemctl status flask-app
+sudo systemctl enable --now flask-app.service 
+cd /etc/systemd/system/default.target.wants
+ls -la
+cd /usr/lib/systemd/system/default.target.wants/
+ls -al
+cd ../multi-user.target.wants/
+ls -la
+cd
+ls
+cp -rp flask-app.py lin2_May/
+ls -la lin2_May/
+cp -rp /etc/systemd/system/flask-app.service lin2_May/
+cd /
+ls -la
+ls -lai
+cd
+touch plik
+cd /sys/
+touch plik
+sudo touch plik
+cd
+ls -lai
+df -hT
+crontab -e 
+sudo systemctl restart sshd | at 3:00 PM 31/05/2025
+sudo systemctl restart sshd | at 3:00 PM 05/31/2025
+sudo systemctl restart sshd | at 3:00 PM 06/1/2025
+cd lin2_May/
+ln --help 
+ln -s /etc/systemd/system/ myServices
+ls -la 
+cd myServices
+ls -la
+cd ..
+cd myServices
+pwd
+cd ..
+ls -la
+ln -s app1-logs /opt/app1/logs 
+mkdir -p /opt/app1/logs
+sudo mkdir -p /opt/app1/logs
+ln -s  /opt/app1/logs app1-logs
+ls -la
+rm -rf /opt/app1/logs
+sudo rm -rf /opt/app1/logs
+ls -la
+cd app1-logs
+sudo mkdir -p /opt/app1/logs
+ls -la
+cd app1-logs
+ls -la
+cd ..
+ls -lai
+ls -ali /opt/app1/logs
+ln README.md hardlink
+ls -lai
+chmod 777 hardlink 
+ls -la 
+ls -lai 
+vi hardlink 
+vi README.md 
+vi hardlink 
+cat /proc/partitions 
+df -h
+df -hT
+lsblk
+blkid
+lshw -class disk
+sudo lshw -class disk
+sudo lshw -class disk -short 
+sudo lshw -class network  
+sudo lshw -class network  -short
+sudo lshw  -short
+cat /proc/partitions 
+ls -la /sys/class/scsi_host/
+echo "- - -" > /sys/class/scsi_host/host1/scan
+sudo echo "- - -" > /sys/class/scsi_host/host1/scan
+sud o-i
+sudo -i
+cat /proc/partitions 
+sudo -i
+cat /proc/partitions 
+sudo gdisk 
+sudo gdisk /dev/sdb
+sudo gdisk /dev/sda
+sudo gdisk /dev/sdb
+df -h
+ls -lah /boot/
+sudo gdisk /dev/sdb
+cat /proc/partitions 
+sudo gdisk /dev/sdb
+sudo pvcreate /dev/sdb
+wipefs --help
+wipefs -a /dev/sdb 
+sudo wipefs -a /dev/sdb 
+sudo pvcreate /dev/sdb
+sudo pvs 
+sudo vgcreate 
+sudo vgcreate vg-test /dev/sdb 
+sudo pvs
+sudo lvcreate --help
+sudo pvdisplay 
+sudo vgremove vg-test
+sudo vgcreate --help
+sudo vgcreate -s 2M vg-test /dev/sdb 
+sudo pvdisplay 
+pvs
+sudo pvs
+sudo vgs
+sudo lvs
+sudo lvcreate -L 1G -n lv-test vg-test 
+sudo lvs
+sudo vgs
+sudo lvcreate -L 500M -n lv-test2 vg-test 
+sudo vgs
+sudo lvs
+sudo mkdir -p /app1
+sudo mkdir -p /app2
+sudo mount /dev/mapper/vg--test-lv--test /app1
+sudo mkfs.xfs  /dev/vg-test/lv-test 
+sudo mkfs.ext4  /dev/vg-test/lv-test2
+sudo mount /dev/vg-test/lv-test /app1
+sudo mount /dev/vg-test/lv-test2 /app2
+df -hT
+sudo -
+sudo -i
+history
+history | awk '$1 > 407' | cut -c 8- > day2-history.txt
