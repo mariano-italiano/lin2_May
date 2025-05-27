@@ -11,8 +11,8 @@
 
 ## Konwencja nazewnicza 
 
-1. **/dev/<vg-name>/<lv-name>**
-2. **/dev/mapper/<vg-name>-<lv-name>**
+1. `/dev/<vg-name>/<lv-name>`
+2. `/dev/mapper/<vg-name>-<lv-name>`
 
 ## Useful commands
 
