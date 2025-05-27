@@ -1,0 +1,75 @@
+date
+date --help
+date +%d-%m-%Y
+date +%d-%m-%y
+date +%d-%m-%Y
+date +%d%m%Y
+date +%d-%m-%Y_%H:%M:%S
+echo $(date +%d-%m-%Y %H:%M:%S) 
+$(date +%d-%m-%Y %H:%M:%S) 
+echo `date +%d-%m-%Y %H:%M:%S`
+echo `date +%d-%m-%Y_%H:%M:%S`
+echo `date +%d-%m-%Y_%H:%M:%S` [INFO] - Wykonany backup > /tmp/testlog.txt 
+cat /tmp/testlog.txt
+touch `date +%d%m%Y_%H%M%S`.log
+ls -la
+hwclock --help
+hwclock -r 
+sudo hwclock -r 
+date
+sudo hwclock -r 
+timedatectl 
+sudo timedatectl -help
+sudo timedatectl set-ntp no
+date
+timedatectl 
+date
+sudo timedatectl set-time 9:26:00
+date
+timedatectl 
+sudo timedatectl set-ntp yes
+timedatectl 
+chronyc sources
+date
+chronyc sources
+chronyc --help
+chronyc sourcestats 
+chronyc serverstats 
+sudo chronyc serverstats 
+timedatectl 
+sudo timedatectl set-timezone US/Pacific 
+date
+timedatectl 
+sudo timedatectl list-timezones 
+sudo timedatectl set-timezone Europe/Warsaw 
+date
+crontab -l
+cat /etc/passwd
+sudo crontab -l testuser
+sudo crontab -l -u testuser
+crontab -e -u testuser
+sudo crontab -e -u testuser
+crontab -e
+date
+tail -F /tmp/date.log
+cat /tmp/date.log
+which date
+crontab -e 
+date
+tail -f /tmp/date.log
+crontab -r 
+crontab -e 
+crontab -l
+at --help
+man at
+echo "hello world" | at 3pm
+systemctl status sshd | at 9:52
+systemctl status gdm.service | at now +72 hours
+systemctl status gdm.service | at 2am tomorrow
+atq 
+at -l
+at -c 2
+at -c 5
+at -c 1
+history 
+history | awk '$1 > 407' | cut -c 8- > lin2_May/day2-history.txt
