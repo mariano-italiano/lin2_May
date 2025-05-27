@@ -8,6 +8,7 @@
 6. Tworzymy mountpoint (czyli folder montowania zasobów dyskowych).
 7. Montujemy zasób (`mount <device> <mountpoint`).
 8. Edytujemy i dodajemy wpis do `/etc/fstab` !!!
+9. Test z komendą `mount -a`
 
 ## Konwencja nazewnicza 
 
