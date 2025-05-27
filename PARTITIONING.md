@@ -8,3 +8,9 @@
 6. Tworzymy mountpoint (czyli folder montowania zasobów dyskowych).
 7. Montujemy zasób (`mount <device> <mountpoint`).
 8. Edytujemy i dodajemy wpis do `/etc/fstab` !!!
+
+## Useful commands
+
+```sh
+wipefs -a /dev/sdX
+```
