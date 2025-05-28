@@ -1,0 +1,291 @@
+sudo vi /etc/fstab 
+mount -a
+sudo mount -a
+sudo vi /etc/fstab 
+sudo mount -a
+swapon -s
+sudo swapoff -a
+swapon -s
+sudo swapon -a
+swapon -s
+cat /proc/partitions 
+lsblk
+sudo lvremove /dev/vg-test/lv-test2
+sudo vgs
+sudo lvs
+sudo lvcreate -L 1G -n lv-swap vg-test
+sudo mkswap /dev/vg-test/lv-swap 
+sudo vi /etc/fstab 
+sudo swapon -a
+swapon -s
+free -m
+sudo swapoff -a
+swapon -s
+cat /proc/swaps 
+sudo swapon -a
+cat /proc/swaps 
+dd if=/dev/urandom of=swapfile1 bs=1M count=100
+sudo mkswap swapfile1 
+chmod 0600 swapfile1
+swapon swapfile1
+sudo swapon swapfile1
+swapon -s
+sudo swapoff swapfile
+sudo swapoff swapfile1
+swapon -s
+sudo vgs
+sudo lvcreate -L 500M -n lv-part1 vg-test
+sudo lvcreate -L 200M -n lv-swap-extra vg-test
+sudo mkdir /part1
+mkfs.ext4 /dev/vg-test/lv-part1
+sudo mkfs.ext4 /dev/vg-test/lv-part1
+blkid
+sudo blkid
+sudo vi /etc/fstab 
+sudo mkswap --help
+sudo mkswap -L swap-extra /dev/vg-test/lv-swap-extra
+sudo blkid
+sudo vi /etc/fstab 
+mount -a
+sudo mount -a
+'systemctl daemon-reload'
+systemctl daemon-reload
+sudo systemctl daemon-reload
+sudo mount -a
+df -hT
+sudo mount -o remount,rw /part1
+cd /part1/
+touch file
+ls -la
+mount
+sudo touch file1
+ls -la
+cd
+umount -/part1
+umount /part1
+sudo umount /part1
+df -h
+sudo umount /app1
+sudo lvremove /dev/vg-test/lv-test
+sudo lvremove /dev/vg-test/lv-part1
+sudo lvremove /dev/vg-test/lv-swap
+sudo lvremove /dev/vg-test/lv-swap-extra
+sudo lvs
+swapon -s
+swapoff /dev/vg-test/lv-swap
+sudo swapoff /dev/vg-test/lv-swap
+swapon -s
+sudo lvremove /dev/vg-test/lv-swap
+sudo lvc
+sudo lvs
+vgremove vg-test
+sudo vgremove vg-test
+sudo pvremove /dev/sdc
+sudo pvremove /dev/sdb
+sudo wipefs -a /dev/sdb
+sudo wipefs -a /dev/sdc
+sudo pvs
+sudo vgs
+sudo lvs
+sudo pvcreate /dev/sd[b,c] 
+sudo vgcreate /dev/sd[b,c] 
+sudo vgcreate vg1 /dev/sd[b,c] 
+sduo vgdisplay
+sudo vgdisplay
+sudo lvcreate --help
+sudo lvcreate -m1 -L 100M -n lv-mirror vg1
+sudo lvdisplay 
+sudo lvs
+sudo lvcreate -L 100M -n lv-data vg1
+sudo mkdir /data
+sudo mkfs.xfs /dev/vg1/lv-data 
+mount /dev/vg1/lv-data /data
+sudo mount /dev/vg1/lv-data /data
+df -hT
+sudo dd if=/dev/urandom of=/data/testfile1 bs=20M count=1
+sudo dd if=/dev/urandom of=/data/testfile2 bs=30M count=1
+df -h
+sudo dd if=/dev/urandom of=/data/testfile3 bs=20M count=1
+ls -la /data
+df -h
+sudo lvcreate -L 100M -s -n lv-data-snap1 /dev/mapper/vg1-lv--data 
+sudo lvs
+sudo rm /data/*
+sudo lvs
+ls -la /data
+sudo umount /data
+lvconvert --merge /dev/vg1/lv-data-snap1
+sudo lvconvert --merge /dev/vg1/lv-data-snap1
+sudo lvs
+sudo mount /dev/vg1/lv-data /data
+ls -la /data
+sudo touch /data/file1 /data/file2 /data/file3
+ls -la /data
+sudo lvcreate -L 100M -s -n lv-data-snap1 /dev/mapper/vg1-lv--data 
+sudo lvs
+sudo rm /data/*
+sudo lvs
+sudo lvconvert --merge /dev/vg1/lv-data-snap1
+sudo lvs
+ls -al /data/
+sudo umount /data/
+sudo lvs
+sudo lvchange --refresh /dev/vg1/lv-data 
+sudo lvs
+sudo mount /dev/vg1/lv-data /data
+ls -la /data/
+lsmod |grep crypt
+lsmod |grep dm_crypt
+sudo modprobe dm_crypt
+lsmod |grep dm_crypt
+sudo dnf install cryptsetup -y
+cryptsetup --version
+sudo lvs
+sudo vgs
+sudo lvcreate -L 1G -n lv-crypt vg1
+sudo lvs
+cryptsetup luksFormat /dev/vg1/lv-crypt 
+sudo cryptsetup luksFormat /dev/vg1/lv-crypt 
+sudo cryptsetup luksOpen /dev/vg1/lv-crypt secret-part
+ls -la /dev/mapper/ | grep secret
+sudo mkfs.xfs /dev/mapper/secret-part 
+sudo mkdir /secret
+sudo mount /dev/mapper/secret-part /secret
+cd /secret/
+sudo touch fiel1 file2
+ls -la
+cd 
+umount /secret 
+sudo umount /secret 
+sudo cryptsetup luksClose secret-part
+sudo vi /etc/crypttab 
+sudo vi /etc/fstab 
+sudo mount -a
+sudo vi /etc/fstab 
+systemctl daemon-reload
+sudo systemctl daemon-reload
+sudo mount -a
+sudo cryptsetup luksOpen /dev/vg1/lv-crypt my_encrypted_partition
+sudo mount -a
+df -h
+sudo reboot
+sudo cryptsetup luksDump --help
+sudo cryptsetup luksDump /dev/vg1/lv-crypt 
+dd if=/dev/urandom of=/root/lukskey count=1 bs=32
+sudo dd if=/dev/urandom of=/root/lukskey count=1 bs=32
+sudo cryptsetup luksAddKey /dev/vg1/lv-crypt /root/lukskey
+sudo cryptsetup luksDump /dev/vg1/lv-crypt 
+sudo vi /etc/crypttab 
+df -h
+sudo reboot 
+df -hT
+cd /secret/
+ls -la
+cd
+vi /etc/login.defs 
+sudo dnf install snapd y
+sudo dnf install snapd -y
+sudo systemctl status snapd.socket
+sudo systemctl start snapd.socket
+sudo systemctl status snapd.socket
+sudo ln -s /var/lib/snapd/snap /snap
+snap install john-the-ripper
+sudo snap install john-the-ripper
+vi /etc/passwd
+ls -la /etc/shadow
+sudo vi /etc/shadow
+cat /etc/sh
+cat /etc/shadow
+sudo tail -5 /etc/shadow
+chage -l student
+useradd --help
+sudo ls -la /home/raper1
+mkdir customSkel
+cd customSkel/
+ln -s /tmp/test link1
+ls -la
+touch /tmp/testlog.txt 
+touch /tmp/test
+ls -la
+vi load-envs.sh
+cjhmod +x load-envs.sh
+chmod +x load-envs.sh
+ls -la
+cd
+sudo useradd -m -g wheel -G nginx -s /bin/sh -c "Test user 1" -k customSkel/ testuser1
+sudo -i
+sudo usermod --help
+sudo usermod -G student testuser1
+id testuser1
+sudo usermod -aG nginx testuser1
+id testuser1
+id 
+sudo userdel --help
+sudo userdel -r testuser1
+ls -la /home/testuser1
+ls -la /home/testuser
+sudo userdel testuser
+sudo ls -la /home/testuser
+sudo groupadd finanse -g 2000
+sudo groupadd ksiegowosc
+cat /etc/group
+vi /etc/login.defs 
+chage --help
+chage -l raper1
+sudo chage -l raper1
+sudo chage -d 0 raper1
+sudo chage -l raper1
+sudo chage -M 10 raper1
+sudo chage -W 21 raper1
+sudo chage -W 14 raper1
+sudo chage -l raper1
+sudo chage -m 0 -M 99999 -I -1 -E -1 raper1
+sudo chage -l raper1
+sudo -i
+mkdir projekty
+ls -la 
+ls -la projekty/
+setfacl -m u:testuser1:rw projekty/
+ls -la
+ls -la projekty/
+getfacl -c projekty/
+setfacl -x u:testuser projekty/
+sudo setfacl -x u:testuser projekty/
+setfacl -x u:testuser1 projekty/
+setfacl -d -m u:testuser1:6 projekty/
+getfacl -c projekty/
+mkdir projekty/proj1
+getfacl -c projekty/proj1
+touch projekty/plik1
+getfacl -c projekty/plik1
+setfacl -k projekty
+getfacl -c projekty/proj1
+ls -la projekty/proj1
+ls -la projekty
+getfacl -c projekty
+getfacl -c projekty/proj1
+rm -rf projekty/*
+getfacl -c projekty
+ls -la projekty
+getfacl -c projekty
+setfacl -b projekty
+getfacl -c projekty
+mkdir /tmp/maskadir
+setfacl -m u:student:rwx /tmp/maskadir
+setfacl -m m:rw /tmp/maskadir
+getfacl -c /tmp/maskadir
+su - student
+cd /tmp/maskadir/
+cd 
+sudo chown root:root /tmp/maskadir/
+cd /tmp/maskadir/
+ls -la /tmp/maskadir/
+sudo ls -la /tmp/maskadir/
+getfacl -c /tmp/maskadir/
+cd /tmp/maskadir/
+ls -la /tmp/maskadir/
+sudo -i
+cd lin2_May/
+git pull
+history
+history | awk '$1 > 672' | cut -c 8- > day3-history.txt
