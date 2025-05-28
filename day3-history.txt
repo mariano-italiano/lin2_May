@@ -289,3 +289,250 @@ cd lin2_May/
 git pull
 history
 history | awk '$1 > 672' | cut -c 8- > day3-history.txt
+useradd -m -s /bin/bash -G ksiegowosc jola
+useradd -m -s /bin/bash -G finanse rafal
+id rafal 
+id jola
+visudo 
+vi /etc/sudoers.d/finanse
+su - rafal 
+visudo 
+vi /etc/sudoers.d/finanse
+visudo 
+vi /etc/sudoers.d/finanse
+su - rafal 
+passwd rafal
+su - rafal 
+visudo 
+su - rafal 
+visudo 
+su - rafal 
+su - jola
+passwd jola
+su - jola
+ls -la
+umask
+umask 0066
+touch plik1
+ls -la plik1
+umask 0200
+ls -la plik2
+touch plik2
+ls -la pl
+umask 0022
+which passwd
+ls -la /bin/passwd
+touch testsuid
+ls -la
+ls -la testsuid 
+chmod 4644 testsuid 
+ls -la testsuid 
+chmod 4744 testsuid 
+ls -la testsuid 
+mkdir ksiegowosc
+ls -la ksiegowosc
+chown root:ksiegowosc ksiegowosc/
+ls -la ksiegowosc
+chmod 2655 ksiegowosc 
+ls -la ksiegowosc
+cd ksiegowosc/
+touch file1
+mkdir tesdir1
+ls -la
+id jola
+cd
+cd /tmp
+ls -la 
+su - jola
+su - student
+cd
+mkdir testdir
+ls -la testdir
+chmod 750 testdir/
+ls -la testdir/
+chmod 1750 testdir/
+ls -la testdir/
+chmod 1751 testdir/
+ls -la testdir/
+sudo dnf install zsh -y
+sudo useradd -m -s /bin/zsh testuser1 
+passwd testuser1
+cat /etc/passwd
+cat /etc/shadow
+chage -d0 testuser1 
+chage -E "01/06/2025" testuser1 
+chage -l testuser1
+chage -E "06/01/2025" testuser1 
+chage -l testuser1
+man mount 
+ls -la ksiegowosc/
+mkdir projekt1
+getfacl projekt1/
+ls -la projekt1/
+getfacl --help
+getfacl -c projekt1/
+ls -la 
+ls -la projekt1/
+mv projekt1/ /
+cd 
+cd /
+ls -la pro
+ls -la projekt1/
+su -student
+su - student
+setfacl -m u:student:rwx /projekt1/
+ls -al /projekt1/
+getfacl -c /projekt1/
+su - student
+id jola
+id rafal 
+chown root:finanse /projekt1/
+getfac -c /projekt1/
+getfacl -c /projekt1
+setfacl -m u:rafal: /projekt1/
+setfacl -m u:rafal:--- /projekt1/
+getfacl -c /projekt1
+useradd -m -s /bib/bash ola
+useradd -m -s /bin/bash ola
+id ols
+id ola
+usermod -s /bin/bash ola
+usermod -aG finanse ola
+id ola
+su - ola
+chmod 770 /projekt1/\
+chmod 770 /projekt1/
+su - ola
+su - rafal
+ls -la /projekt1/
+getfacl -c projekt1/
+chmod 775 /projekt1/
+getfacl -c projekt1/
+chmod 770 /projekt1/
+getfacl -c projekt1/
+setfacl -m g:finanse:rwx projekt1/
+getfacl -c projekt1/
+su - ola
+setfacl -b /projekt1/
+getfacl  -c /projekt1/
+ls -la /projekt1/
+chmod 770 /projekt1/
+su - ola
+mkdir /tmp/projekt2
+chmod 770 /tmp/projekt2
+chgrp finanse /tmp/projekt2
+su - ola
+ls -la /tmp/projekt2/
+su - student
+setfacl -m u:student:rwx /tmp/projekt2/
+su - student
+su - rafal 
+setfacl -m u:rafal:--- /tmp/projekt2/
+su - rafal 
+id jola
+su - jola
+setfacl -m g:ksiegowosc:rx /tmp/projekt2/
+su - jola
+setfacl -x g:ksiegowosc /tmp/projekt2/
+getfacl -c /tmp/projekt2/
+su - jola
+mkdir /tmp/projekt3 
+chgrp finanse /tmp/projekt3
+ls -la /tmp/projekt3
+setfacl -d -m g:finanse:rwx /tmp/projekt3
+setfacl -d -m g:ksiegowosc:rx /tmp/projekt3
+id rafal
+su - rafal 
+chmod 770 /tmp/projekt3
+su - rafal 
+su - jola
+setfacl -m g:ksiegowosc:rx /tmp/projekt3
+su - jola
+su - student
+setfacl -m u:student:5 /tmp/projekt3
+su - student
+setfacl --help
+setfacl -k g:ksiegowosc /tmp/projekt3
+setfacl -k /tmp/projekt3
+getfacl -c /tmp/projekt3
+cd /etc/pam.d/
+ls -la
+vi password-auth 
+vi sshd
+vi /etc/ssh/sshd.deny
+cd /etc/pam.d/sshd
+v i/etc/pam.d/sshd
+v /etc/pam.d/sshd
+vi /etc/pam.d/sshd
+vi /etc/ssh/sshd.deny 
+cd 
+cp /etc/ssh/sshd.deny /home/student/lin2_May/
+cp /etc/pam.d/sshd /home/student/lin2_May/
+vi /etc/pam.d/sshd 
+vi /etc/security/time.conf 
+cat /etc/security/time.conf | grep Wk
+cat /etc/security/time.conf | grep Wd
+vi /etc/security/time.conf 
+systemctl status nginx
+systemctl start nginx.service 
+systemctl status nginx
+vi /etc/security/time.conf 
+systemctl status nginx
+vi /etc/security/time.conf 
+systemctl status nginx
+vi /etc/nginx/nginx.conf
+vi /etc/pam.d/
+dnf install authselect-compat
+authconfig --enablefaillock --faillockargs="deny=3 unlock_time=60 even_deny_root" --update
+vi /etc/pam.d/system-auth 
+vi /etc/pam.d/passw
+vi /etc/pam.d/password-auth 
+cd /var/log/
+ls -la
+less secure 
+tail -f secure 
+faillock --user student
+faillock --user student --reset 
+faillock --user student
+cd 
+cd /home/student/lin2_May/
+ls -la
+mkdir ldap
+cd ldap/
+ls -la
+vi /etc/hosts
+nslookup centos.lab.local
+nslookup centos9.lab.local
+ping centos9.lab.local
+vi /etc/nsswitch.conf 
+dnf install -y openldap-servers openldap-clients
+vi /etc/openldap/ldap.conf 
+systemctl status slapd.service 
+systemctl enable --now slapd
+systemctl status slapd.service 
+slappasswd 
+vi adminpw.ldif
+ldapadd --help 
+ldapadd -Y EXTERNAL -H ldapi:/// -f adminpw.ldif 
+ls -la /etc/openldap/schema/
+ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/cosine.ldif 
+ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/inetorgperson.ldif 
+ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/nis.ldif 
+slappasswd 
+vi ldapdomain.ldif
+ldapadd -Y EXTERNAL -H ldapi:/// -f ldapdomain.ldif 
+vi domaintree.ldif
+ldapadd -Y EXTERNAL -H ldapi:/// -f domaintree.ldif 
+vi domaintree.ldif
+ldapadd -x -D cn=Manager,dc=lab,dc=local -W -f domaintree.ldif 
+cp /etc/pam.d/sshd ../
+cp /etc/security/time.conf ../
+cp /etc/pam.d/password-auth ../
+cp /etc/pam.d/system-auth ../
+cd ..
+git status
+git add .
+git commit -m "adding day3 files"
+git push
+history
+history | awk '$1 > 206' | cut -c 8- >> /home/student/lin2_May/day3-history.txt 
