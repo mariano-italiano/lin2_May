@@ -1,0 +1,17 @@
+dn: uid=new-user,ou=Users,dc=lab,dc=local
+uid: new-user
+cn: new-user
+objectClass: account
+objectClass: posixAccount
+objectClass: top
+objectClass: shadowAccount
+userPassword: {crypt}!!
+shadowLastChange: 20236
+shadowMin: 0
+shadowMax: 99999
+shadowWarning: 7
+loginShell: /bin/bash
+uidNumber: 100701
+gidNumber: 100701
+homeDirectory: /home/new-user
+gecos: test new user

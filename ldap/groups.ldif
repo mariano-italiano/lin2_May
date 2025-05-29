@@ -1,0 +1,66 @@
+dn: cn=student,ou=Groups,dc=lab,dc=local
+objectClass: posixGroup
+objectClass: top
+cn: student
+userPassword: {crypt}x
+gidNumber: 100000
+
+dn: cn=raper1,ou=Groups,dc=lab,dc=local
+objectClass: posixGroup
+objectClass: top
+cn: raper1
+userPassword: {crypt}x
+gidNumber: 100200
+
+dn: cn=raper2,ou=Groups,dc=lab,dc=local
+objectClass: posixGroup
+objectClass: top
+cn: raper2
+userPassword: {crypt}x
+gidNumber: 100300
+
+dn: cn=finanse,ou=Groups,dc=lab,dc=local
+objectClass: posixGroup
+objectClass: top
+cn: finanse
+userPassword: {crypt}x
+gidNumber: 200000
+memberUid: ola
+memberUid: rafal
+
+dn: cn=ksiegowosc,ou=Groups,dc=lab,dc=local
+objectClass: posixGroup
+objectClass: top
+cn: ksiegowosc
+userPassword: {crypt}x
+gidNumber: 200100
+memberUid: jola
+
+dn: cn=jola,ou=Groups,dc=lab,dc=local
+objectClass: posixGroup
+objectClass: top
+cn: jola
+userPassword: {crypt}x
+gidNumber: 100400
+
+dn: cn=rafal,ou=Groups,dc=lab,dc=local
+objectClass: posixGroup
+objectClass: top
+cn: rafal
+userPassword: {crypt}x
+gidNumber: 100500
+
+dn: cn=testuser1,ou=Groups,dc=lab,dc=local
+objectClass: posixGroup
+objectClass: top
+cn: testuser1
+userPassword: {crypt}x
+gidNumber: 100600
+
+dn: cn=ola,ou=Groups,dc=lab,dc=local
+objectClass: posixGroup
+objectClass: top
+cn: ola
+userPassword: {crypt}x
+gidNumber: 100700
+

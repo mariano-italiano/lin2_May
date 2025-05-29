@@ -2,7 +2,7 @@ import http.server
 import socketserver
 import platform
 
-PORT = 8080
+PORT = 9090
 
 class InfoHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):

@@ -1,0 +1,7 @@
+student:x:1000:1000:Student:/home/student:/bin/bash
+raper1:x:1002:1002::/home/raper1:/bin/bash
+raper2:x:1003:1003::/home/raper2:/bin/bash
+jola:x:1004:1004::/home/jola:/bin/bash
+rafal:x:1005:1005::/home/rafal:/bin/bash
+testuser1:x:1006:1006::/home/testuser1:/bin/zsh
+ola:x:1007:1007::/home/ola:/bin/bash

@@ -1,0 +1,319 @@
+wget http://mirror.centos.org/altarch/7/os/aarch64/Packages/migrationtools-47-15.el7.noarch.rpm
+wget https://buildlogs.centos.org/centos/7/os/x86_64-latest/Packages/migrationtools-47-15.el7.noarch.rpm
+mv migrationtools-47-15.el7.noarch.rpm /home/student/lin2_May/ldap/
+rpm -ivh /home/student/lin2_May/ldap/migrationtools-47-15.el7.noarch.rpm 
+dnf localinstall /home/student/lin2_May/ldap/migrationtools-47-15.el7.noarch.rpm
+cd /usr/share/migrationtools/
+ls -la
+cat /etc/group
+vi /home/student/lin2_May/ldap/groups-to-migrate
+cat /etc/passwd | tail -10 
+cat /etc/passwd | tail -10 > /home/student/lin2_May/ldap/users-to-migrate
+vi /home/student/lin2_May/ldap/users-to-migrate
+./migrate_group.pl /home/student/lin2_May/ldap/groups-to-migrate /home/student/lin2_May/ldap/groups.ldif
+vi /home/student/lin2_May/ldap/groups.ldif
+sed 's/dc=padl,dc=com/dc=lab,dc=local/g' /home/student/lin2_May/ldap/groups.ldif
+sed -i 's/dc=padl,dc=com/dc=lab,dc=local/g' /home/student/lin2_May/ldap/groups.ldif
+vi /home/student/lin2_May/ldap/domaintree.ldif 
+sed -i 's/ou=Group/ou=Groups/g' /home/student/lin2_May/ldap/groups.ldif
+vi /home/student/lin2_May/ldap/groups.ldif
+vi /etc/login.defs 
+vi /home/student/lin2_May/ldap/groups.ldif
+sed 's/\b[0-9]\{4\}\b/&00/g' /home/student/lin2_May/ldap/groups.ldif
+sed -i 's/\b[0-9]\{4\}\b/&00/g' /home/student/lin2_May/ldap/groups.ldif
+./migrate_passwd.pl /home/student/lin2_May/ldap/users-to-migrate /home/student/lin2_May/ldap/users.ldif
+vi /home/student/lin2_May/ldap/users.ldif
+sed 's/\b[0-9]\{4\}\b/&00/g' /home/student/lin2_May/ldap/users.ldif
+sed -i 's/\b[0-9]\{4\}\b/&00/g' /home/student/lin2_May/ldap/users.ldif
+sed -i 's/ou=People,dc=padl,dc=com/ou=Users,dc=lab,dc=local/g' /home/student/lin2_May/ldap/users.ldif 
+vi /home/student/lin2_May/ldap/users.ldif
+ldapadd -x -D cn=Manager,dc=lab,dc=local -W -f /home/student/lin2_May/ldap/groups.ldif 
+ldapadd -x -D cn=Manager,dc=lab,dc=local -W -f /home/student/lin2_May/ldap/users.ldif 
+ldapsearch --help
+ldapsearch -x -b dc=lab,dc=local -H ldap://localhost 
+ldapsearch -x -b ou=Users,dc=lab,dc=local -H ldap://localhost 
+ldapsearch -x -b dc=lab,dc=local -H ldap://localhost "objectClass=account"  dn cn homeDirectory 
+ldapsearch -x -b dc=lab,dc=local -H ldap://localhost "cn=raper*" dn cn
+ldapsearch -x -b dc=lab,dc=local -H ldap://localhost "cn=raper*" dn cn gecos
+ldapsearch -x -b dc=lab,dc=local -H ldap://localhost "cn=raper*" dn cn gekos
+cat /home/student/lin2_May/ldap/users.ldif 
+vi /home/student/lin2_May/ldap/new-user.ldif
+ldapadd -x -D -D cn=Manager,dc=lab,dc=local -W -f /home/student/lin2_May/ldap/new-user.ldif
+ldapadd -x -D cn=Manager,dc=lab,dc=local -W -f /home/student/lin2_May/ldap/new-user.ldif
+ldapsearch -x -b dc=lab,dc=local -H ldap://localhost "cn=new*" dn cn gekos
+ldapdelete -x -D cn=Manager,dc=lab,dc=local -W "uid=new-user,ou=Users,dc=lab,dc=local"
+ldapsearch -x -b dc=lab,dc=local -H ldap://localhost "cn=new*" dn cn gekos
+ldapsearch -x -b dc=lab,dc=local -H ldap://localhost 
+ldapsearch -x -b dc=lab,dc=local -H ldap://localhost "(&(cn=rafal*)(objectClass=account))"
+ldapsearch -x -b dc=lab,dc=local -H ldap://localhost "(|(cn=rafal*)(objectClass=account))"
+ldapsearch -x -b dc=lab,dc=local -H ldap://localhost "cn:caseExactMatch:=Rafal1"
+ldapsearch -x -b dc=lab,dc=local -H ldap://localhost "cn:caseExactMatch:=rafal1"
+ldapsearch -x -b dc=lab,dc=local -H ldap://localhost "cn:caseExactMatch:=Rafal"
+ldapsearch -x -b dc=lab,dc=local -H ldap://localhost "cn:caseExactMatch:=rafal"
+history
+poweroff
+history
+systemctl status slapd
+netstat -vatnlup
+systemctl disable --now slapd
+systemctl isolate graphical.target 
+systemctl get-default 
+systemctl isolate multi-user.target 
+systemctl isolate graphical.target 
+vi /etc/hosts 
+dnf rpeolist
+dnf repolist
+dnf install freeipa-server-dns
+ipa-server-install 
+systemctl disable --now nginx
+netstat -vatnulp
+ps -ef | grep python
+systemctl status flask-app.service 
+systemctl disable --now flask-app.service
+ipa-server-install 
+ssh mkujawski@lab.local@192.168.1.82
+ping 192.168.1.82
+ssh 192.168.1.82
+systemctl status firewalld.service 
+curl -v telnet://192.168.1.82:22
+ping centos8-client
+ping centos8-client.lab.local
+nslookup centos8-client.lab.local
+nmtui-edit 
+nmcli connection down ens33 ; nmcli connection up ens33 
+nslookup centos8-client.lab.local
+ping centos8-client.lab.local
+vi /etc/resolv.conf 
+ping 192.168.1.82
+ssh 192.168.1.82
+nslookup centos8-client.lab.local
+ssh mkujawski@lab.local@centos8-client.lab.local
+ipa --help
+ipa user-add 
+kinit admin
+klist
+ipa user-add 
+ipa user-mod akowalski
+ipa user-add mkowalska --first=Mariola --last=Kowalska --password
+ipa 
+kdestroy 
+klist
+kinit mkujawski
+klist
+vi /etc/krb5.conf
+ps -ef 
+ps -efd 
+ps aux
+ps aux | grep -i chronyd
+man ps
+ps axo stat,euid,ruid,tty,tpgid,sess,pgrp,ppid,pid,pcpu,comm
+ps axo pid,ppid,stat,pcpu,pmem,comm
+ps -eL
+ps -eLf
+ps -U student
+ps -U student -u student
+pgrep sshd 
+pgrep -u student -l 
+pgrep -u student sshd
+pgrep -v -u student -l
+man ulimit
+VAR1="Test"
+echo $VAR1
+unset VAR1
+echo $VAR1
+man ulimit
+ulimit
+ulimit -Sa
+ulimit -Ha
+ps -U student
+watch -n1 ps -U student
+ps -ef
+ps aux
+ps -edf
+ps -elf
+cd /home/student/lin2_May/
+ls -la
+vi flask-app.py 
+systemctl start flask-app.service 
+systemctl status flask-app.service 
+vi flask-app.py 
+systemctl restart flask-app.service 
+systemctl status flask-app.service 
+systemctl stop flask-app.service 
+vi app.py
+python3 app.py 
+pip install falsk
+pip install flask
+dnf install -y python3-pip
+pip install flask
+python3 app.py 
+cat flask-app.service 
+cat flask-app.service > app.py
+cat flask-app.service > app.service
+vi app.py
+vi app.service 
+mv app.service my-app.service
+cp -rp my-app.service /etc/systemd/system/
+systemctl daemon-reload 
+systemctl status my-app.service 
+systemctl start my-app.service 
+systemctl status my-app.service 
+vi app.py 
+vi /home/student/app.py
+vi /etc/systemd/system/my-app.service
+systemctl daemon-reload 
+systemctl start my-app.service 
+systemctl status my-app.service 
+ps -ef | grep my-app
+ps -ef | grep python
+ps -elf | grep python
+renice -20 14071 
+ps -elf | grep python
+renice 50 14071 
+ps -elf | grep python
+systemctl stop my-app.service 
+vi /etc/systemd/system/my-app.service
+which nice
+vi /etc/systemd/system/my-app.service
+systemctl daemon-reload 
+systemctl start my-app.service 
+systemctl status my-app.service 
+ps -elf | grep python
+systemctl stop my-app.service 
+nice -n -20 python3 app.py 
+kill -l
+tail -f my-app.service 
+kill -l
+tail -f my-app.service 
+kill -l
+kill -ble
+$((12 / 0 ))
+ps -ef | grep sshd
+kill -19 14286 
+kill -18 14286
+pidof chronyd
+systemctl status my-app.service 
+systemctl start my-app.service 
+pidof my-app
+pidof my-app.servuce
+pidof python3
+pidof python3 app.py
+pidof sshd
+pidof chronyd
+pkill chronyd
+systemctl status chronyd
+vi skrypt-signals.sh
+chmod +x skrypt-signals.sh
+./skrypt-signals.sh & 
+kill 14493
+./skrypt-signals.sh
+vi skrypt-signals.sh 
+./skrypt-signals.sh
+sysctl -a
+ls -la /proc/sys
+ls -la /proc/sys/vm
+cat /proc/sys/vm/swappiness 
+cat /proc/sys/vm/overcommit_memory
+echo 30 > /proc/sys/vm/swappiness
+cat /proc/sys/vm/swappiness 
+sysctl -a | grep swappin
+vi /etc/sysctl.conf 
+sysctl -a | grep swappin
+systs
+sysctl --system
+sysctl -a | grep swappin
+sysctl -a | grep ip_forward
+sysctl -a | grep icmp_echo_ignore
+ping centos8-client
+ping centos8-client.lab.local
+echo '1' > /proc/sys/net/ipv4/icmp_echo_ignore_all 
+ping centos8-client.lab.local
+echo '0' > /proc/sys/net/ipv4/icmp_echo_ignore_all 
+echo '1' > /proc/sys/net/ipv4/icmp_echo_ignore_all 
+echo '0' > /proc/sys/net/ipv4/icmp_echo_ignore_all 
+sysctl -a | grep ttl
+lsmod
+uname -r
+uname -a
+find /lib/modules/5.14.0-412.el9.x86_64/ -type f -name '*.ko*'
+find /lib/modules/5.14.0-412.el9.x86_64/ -type f -name '*.ko*' | grep nf-call
+find /lib/modules/5.14.0-412.el9.x86_64/ -type f -name '*.ko*' | grep -i iptables
+sysctl -a | grep -i nf-call 
+sysctl -a | grep -i iptables
+sysctl -a 
+find /lib/modules/5.14.0-412.el9.x86_64/ -type f -name '*.ko*'
+find /lib/modules/5.14.0-412.el9.x86_64/ -type f -name '*.ko*' | grep -i crypt
+find /lib/modules/5.14.0-412.el9.x86_64/ -type f -name '*.ko*' | grep -i e1000
+find /lib/modules/5.14.0-412.el9.x86_64/ -type f -name '*.ko*' | grep -i vmxnet3
+modprobe vmxnet3
+lsmod | grep vmxnet3
+modprobe -e vmxnet3
+modprobe -r vmxnet3
+lsmod | grep vmxnet3
+insmod --help
+man insmod
+insmod /lib/modules/5.14.0-412.el9.x86_64/kernel/drivers/net/vmxnet3/vmxnet3.ko.xz
+lsmod | grep vmxnet3
+rmmod --help
+rmmod vmxnet3
+lsmod | grep vmxnet3
+insmod vmxnet3
+systemd-analyze 
+systemd-analyze blame
+systemd-analyze 
+journalctl 
+date
+timedatectl 
+systemctl start chronyd
+timedatectl 
+chronyc source
+chronyc sources
+timedatectl 
+date
+journalctl 
+systemctl restart chronyd
+journalctl 
+journalctl -u chronyd
+which chronyd
+journalctl /sbin/chronyd 
+journalctl -u sshd
+journalctl -u my-app
+journalctl -p err
+journalctl -b
+journalctl --since=today
+journalctl --since=10min
+journalctl --since=-10min
+journalctl -f
+journalctl -o verbose -u my-app
+journalctl -u my-app
+journalctl -o verbose -u my-app 
+journalctl -o verbose -u my-app MESSAGE="*error*"
+journalctl -o verbose -u my-app MESSAGE="error"
+journalctl -o verbose -u my-app MESSAGE="Error"
+journalctl -o verbose -u my-app UNIT=my-app.service
+journalctl -o verbose
+cd /run/log
+ls -la
+cd journal/
+ls -la 
+cd 13b58c66f2c344ffa21725d154e6c6da/
+ls -la
+vi system.journal
+file system.journal
+file /home/student/swapfile1
+file /home/student/testfile
+file /home/student/plik.txt 
+ls -a
+ls -la
+mkdir /var/log/journal 
+vi /etc/systemd/journald.conf 
+systemctl restart systemd-journal
+systemctl restart systemd-journald
+vi /etc/systemd/journald.conf 
+ls -la
+cd .
+cd ..
+ls -la
+ls -la 13b58c66f2c344ffa21725d154e6c6da/
+history 
+history | awk '$1 > 453' | cut -c 8- >> /home/student/lin2_May/day4-history.txt
