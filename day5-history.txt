@@ -1,0 +1,560 @@
+nmtui
+nmcli connection show ens33 
+nmcli connection show ens33 | wc -l
+dig centos8-client.lab.local
+nslookup centos8-client.lab.local
+nslookup wp.pl
+nmtui-edit
+nmcli connection down ens33 ; nmcli connection up ens33 
+nslookup wp.pl
+nslookup 192.168.1.1 wp.pl
+vi /etc/resolv.conf 
+systemctl status ipa
+systemctl stop ipa
+nslookup wp.pl
+vi /etc/resolv.conf 
+nslookup wp.pl
+nmcli connection down ens33 ; nmcli connection up ens33 
+vi /etc/resolv.conf 
+nmtui
+nmcli connection down ens33 ; nmcli connection up ens33 
+vi /etc/resolv.conf 
+nslookup 
+curl -v telnet://212.77.101.4:25
+curl -v telnet://212.77.101.4:625
+curl -v telnet://212.77.98.9:80
+curl -v telnet://212.77.98.9:443
+curl -v telnet://212.77.98.9:22
+curl -v telnet://212.77.101.4:22
+curl -v telnet://192.168.1.1:22
+curl -v telnet://192.168.1.1:443
+traceroute
+dnf provides tracroute
+dnf provides traceroute
+dnf install  traceroute
+dnf provides netstat
+traceroute 212.77.98.9 
+traceroute --help
+traceroute -I 212.77.98.9 
+tracepath 212.77.98.9
+tracepath -I 212.77.98.9
+vi /etc/hosts
+ping wp.pl
+vi /etc/nsswitch.conf
+ping wp.pl
+vi /etc/hosts
+ping mycustomdns
+vi /etc/hosts
+systemctl status firewalld.service 
+systemctl start firewald
+systemctl start firewaldd
+systemctl start firewalld
+systemctl status firewalld.service 
+systemctl enable firewalld.service 
+firewall-cmd --list-all
+firewall-cmd --info-service=cockpit 
+systemctl status nginx
+systemctl start nginx
+curl http://192.168.1.90
+firewall-cmd --zone public --add-service=http
+firewall-cmd --list-all
+firewall-cmd --reload
+firewall-cmd --list-all
+firewall-cmd --zone public --add-service=http --permanent 
+firewall-cmd --reload
+netstat -vatnulp
+systemctl start my-app.service 
+netstat -vatnulp
+firewall-cmd --zone public --add-port=5000/tcp --permanent 
+firewall-cmd --reload
+firewall-cmd --list-all
+firewall-cmd --get-zones
+firewall-cmd --zone trusted --list-all
+firewall-cmd --zone work --list-all
+firewall-cmd --zone home --list-all
+firewall-cmd --get-zones
+firewall-cmd --new-zone mycustomAppzone
+firewall-cmd --new-zone mycustomAppzone --permanent
+firewall-cmd --get-zones
+firewall-cmd --reload
+firewall-cmd --get-zones
+firewall-cmd --zone mycustomAppzone --add-service=ssh --permanent 
+firewall-cmd --zone mycustomAppzone --add-service=nfs --permanent 
+firewall-cmd --zone mycustomAppzone --add-service=cifs --permanent 
+firewall-cmd --zone mycustomAppzone --add-service=samba --permanent 
+firewall-cmd --zone mycustomAppzone --add-service=samba-client --permanent 
+firewall-cmd --zone mycustomAppzone --add-port=5000/tcp --permanent 
+firewall-cmd --zone mycustomAppzone --add-port=8080/tcp --permanent 
+firewall-cmd --zone mycustomAppzone --add-port=123/udp --permanent 
+firewall-cmd --zone mycustomAppzone --add-forward-port=port=3128:proto=tcp:toport=443:toaddr=192.168.1.82
+firewall-cmd --zone mycustomAppzone --add-forward-port=port=3000:proto=tcp:toport=80
+firewall-cmd --reload
+firewall-cmd --zone mycustomAppzone --add-forward-port=port=3000:proto=tcp:toport=80 --permanent 
+firewall-cmd --reload
+firewall-cmd --list-all --zone=mycustomAppzone 
+firewall-cmd --zone mycustomAppzone --add-forward-port=port=3128:proto=tcp:toport=80:toaddr=192.168.1.90
+firewall-cmd --zone mycustomAppzone --add-forward-port=port=3128:proto=tcp:toport=80:toaddr=192.168.1.90 --permanent 
+firewall-cmd --reload
+firewall-cmd --list-all --zone=mycustomAppzone 
+netstat -varntl
+netstat -vatnulp
+firewall-cmd --list-all --zone=mycustomAppzone 
+firewall-cmd --set-default-zone=mycustomAppzone 
+firewall-cmd --list-all
+firewall-cmd --list-all --zone=public
+firewall-cmd --zone mycustomAppzone --add-port=3128/tcp --permanent 
+firewall-cmd --zone mycustomAppzone --add-port=3000/tcp --permanent 
+firewall-cmd --reload
+firewall-cmd --list-all 
+netstat -vatnulp
+iptables -L -v -n
+nft list ruleset
+cd /home/student/lin2_May/
+vi ports
+cat ports | awk '{print $3}'
+vi ports 
+cat ports 
+cat /etc/services | grep 3128
+cat /etc/services | grep 445
+cat /etc/services | grep 139
+cat /etc/services | grep 138
+cat /etc/services | grep 137
+cat /etc/services | grep 8080
+cat /etc/services | grep 443
+cat /etc/services | grep 22
+cat /etc/services | grep ^22%
+cat /etc/services | grep ^22$
+cat /etc/services | grep "^22$"
+cat /etc/services | grep 
+cat /etc/services | grep 22
+cat /etc/services | grep ^22/tcp$
+cat /etc/services | grep 22/tcp$
+cat /etc/services | grep 22
+cat /etc/services | wc -l
+firewall-cmd --list-all
+firewall-cmd --get-active-zones 
+cd /usr/lib/firewalld/services/
+ls -la
+cp -rp ssh.xml flask-app.xml
+vi flask-app.xml
+firewall-cmd --reload 
+firewall-cmd --zone mycustomAppzone --add-service=flask-app --permanent 
+firewall-cmd --list-all
+firewall-cmd --reload 
+firewall-cmd --list-all
+firewall-cmd --permanent --new-service=customService --set-description="My custom service from cmd"
+firewall-cmd --permanent --service=customService --add-port=1111/tcp 
+firewall-cmd --permanent --service=customService --add-service=https
+firewall-cmd --permanent --service=customService --add-source=192.168.1.10
+firewall-cmd --permanent --service=customService --add-source=192.168.1.10/32
+firewall-cmd --permanent --service=customService --add-protocol=udp
+firewall-cmd --info-service=customService 
+firewall-cmd --reload 
+firewall-cmd --info-service=customService 
+firewall-cmd --permanent --service=customService --add-source-port=801/tcp
+firewall-cmd --reload 
+firewall-cmd --info-service=customService 
+systemctl disable --now firewalld.service 
+dnf install iptables-services
+iptables -L -v -n
+systemctl status iptables.service 
+systemctl start iptables.service
+iptables -L -v -n
+ping 192.168.1.82
+ssh 192.168.1.82
+ping 192.168.1.82
+cd 
+cd /home/student/lin2_May/
+git pull
+systemctl disable --now iptables
+systemctl start ipa
+nmtui
+nmcli connection down ens33 ; nmcli connection up ens33 
+systemctl start ipa
+systemctl status ipa.service
+journalctl 
+journalctl -b
+journalctl -u ipa
+systemctl status slapd.service 
+journalctl -xeu ipa.service
+netstat -vatnulp
+systemctl disable --now nginx
+systemctl start ipa
+systemctl status ipa.service
+cd /var/log/
+ls -la 
+cd ipa/
+ls -la
+less -la
+less ipactl.log 
+less messages
+less ../messages
+systemctl httpd status
+systemctl status httpd
+vi /etc/httpd/conf.d/ssl.conf
+systemctl status ipa.service
+netstat -vatnlp | grep 443
+vi /etc/httpd/conf.d/ssl.conf
+systemctl start ipa
+systemctl status ipa.service
+systemctl status firewalld.service 
+systemctl status iptables.service 
+systemctl status nginx
+systemctl status httpd
+grep -ri "443" /etc/httpd/conf.d/*
+vi /etc/httpd/conf.d/nss.conf 
+vi /etc/httpd/conf.d/
+vi /etc/httpd/conf.d/ssl.conf 
+systemctl stop ipa
+systemctl status ipa
+systemctl start ipa
+history
+history | awk '$1 > 864' | cut -c 8- >> /home/student/lin2_May/day5-history.txt
+nmtui
+nmcli connection show ens33 
+nmcli connection show ens33 | wc -l
+dig centos8-client.lab.local
+nslookup centos8-client.lab.local
+nslookup wp.pl
+nmtui-edit
+nmcli connection down ens33 ; nmcli connection up ens33 
+nslookup wp.pl
+nslookup 192.168.1.1 wp.pl
+vi /etc/resolv.conf 
+systemctl status ipa
+systemctl stop ipa
+nslookup wp.pl
+vi /etc/resolv.conf 
+nslookup wp.pl
+nmcli connection down ens33 ; nmcli connection up ens33 
+vi /etc/resolv.conf 
+nmtui
+nmcli connection down ens33 ; nmcli connection up ens33 
+vi /etc/resolv.conf 
+nslookup 
+curl -v telnet://212.77.101.4:25
+curl -v telnet://212.77.101.4:625
+curl -v telnet://212.77.98.9:80
+curl -v telnet://212.77.98.9:443
+curl -v telnet://212.77.98.9:22
+curl -v telnet://212.77.101.4:22
+curl -v telnet://192.168.1.1:22
+curl -v telnet://192.168.1.1:443
+traceroute
+dnf provides tracroute
+dnf provides traceroute
+dnf install  traceroute
+dnf provides netstat
+traceroute 212.77.98.9 
+traceroute --help
+traceroute -I 212.77.98.9 
+tracepath 212.77.98.9
+tracepath -I 212.77.98.9
+vi /etc/hosts
+ping wp.pl
+vi /etc/nsswitch.conf
+ping wp.pl
+vi /etc/hosts
+ping mycustomdns
+vi /etc/hosts
+systemctl status firewalld.service 
+systemctl start firewald
+systemctl start firewaldd
+systemctl start firewalld
+systemctl status firewalld.service 
+systemctl enable firewalld.service 
+firewall-cmd --list-all
+firewall-cmd --info-service=cockpit 
+systemctl status nginx
+systemctl start nginx
+curl http://192.168.1.90
+firewall-cmd --zone public --add-service=http
+firewall-cmd --list-all
+firewall-cmd --reload
+firewall-cmd --list-all
+firewall-cmd --zone public --add-service=http --permanent 
+firewall-cmd --reload
+netstat -vatnulp
+systemctl start my-app.service 
+netstat -vatnulp
+firewall-cmd --zone public --add-port=5000/tcp --permanent 
+firewall-cmd --reload
+firewall-cmd --list-all
+firewall-cmd --get-zones
+firewall-cmd --zone trusted --list-all
+firewall-cmd --zone work --list-all
+firewall-cmd --zone home --list-all
+firewall-cmd --get-zones
+firewall-cmd --new-zone mycustomAppzone
+firewall-cmd --new-zone mycustomAppzone --permanent
+firewall-cmd --get-zones
+firewall-cmd --reload
+firewall-cmd --get-zones
+firewall-cmd --zone mycustomAppzone --add-service=ssh --permanent 
+firewall-cmd --zone mycustomAppzone --add-service=nfs --permanent 
+firewall-cmd --zone mycustomAppzone --add-service=cifs --permanent 
+firewall-cmd --zone mycustomAppzone --add-service=samba --permanent 
+firewall-cmd --zone mycustomAppzone --add-service=samba-client --permanent 
+firewall-cmd --zone mycustomAppzone --add-port=5000/tcp --permanent 
+firewall-cmd --zone mycustomAppzone --add-port=8080/tcp --permanent 
+firewall-cmd --zone mycustomAppzone --add-port=123/udp --permanent 
+firewall-cmd --zone mycustomAppzone --add-forward-port=port=3128:proto=tcp:toport=443:toaddr=192.168.1.82
+firewall-cmd --zone mycustomAppzone --add-forward-port=port=3000:proto=tcp:toport=80
+firewall-cmd --reload
+firewall-cmd --zone mycustomAppzone --add-forward-port=port=3000:proto=tcp:toport=80 --permanent 
+firewall-cmd --reload
+firewall-cmd --list-all --zone=mycustomAppzone 
+firewall-cmd --zone mycustomAppzone --add-forward-port=port=3128:proto=tcp:toport=80:toaddr=192.168.1.90
+firewall-cmd --zone mycustomAppzone --add-forward-port=port=3128:proto=tcp:toport=80:toaddr=192.168.1.90 --permanent 
+firewall-cmd --reload
+firewall-cmd --list-all --zone=mycustomAppzone 
+netstat -varntl
+netstat -vatnulp
+firewall-cmd --list-all --zone=mycustomAppzone 
+firewall-cmd --set-default-zone=mycustomAppzone 
+firewall-cmd --list-all
+firewall-cmd --list-all --zone=public
+firewall-cmd --zone mycustomAppzone --add-port=3128/tcp --permanent 
+firewall-cmd --zone mycustomAppzone --add-port=3000/tcp --permanent 
+firewall-cmd --reload
+firewall-cmd --list-all 
+netstat -vatnulp
+iptables -L -v -n
+nft list ruleset
+cd /home/student/lin2_May/
+vi ports
+cat ports | awk '{print $3}'
+vi ports 
+cat ports 
+cat /etc/services | grep 3128
+cat /etc/services | grep 445
+cat /etc/services | grep 139
+cat /etc/services | grep 138
+cat /etc/services | grep 137
+cat /etc/services | grep 8080
+cat /etc/services | grep 443
+cat /etc/services | grep 22
+cat /etc/services | grep ^22%
+cat /etc/services | grep ^22$
+cat /etc/services | grep "^22$"
+cat /etc/services | grep 
+cat /etc/services | grep 22
+cat /etc/services | grep ^22/tcp$
+cat /etc/services | grep 22/tcp$
+cat /etc/services | grep 22
+cat /etc/services | wc -l
+firewall-cmd --list-all
+firewall-cmd --get-active-zones 
+cd /usr/lib/firewalld/services/
+ls -la
+cp -rp ssh.xml flask-app.xml
+vi flask-app.xml
+firewall-cmd --reload 
+firewall-cmd --zone mycustomAppzone --add-service=flask-app --permanent 
+firewall-cmd --list-all
+firewall-cmd --reload 
+firewall-cmd --list-all
+firewall-cmd --permanent --new-service=customService --set-description="My custom service from cmd"
+firewall-cmd --permanent --service=customService --add-port=1111/tcp 
+firewall-cmd --permanent --service=customService --add-service=https
+firewall-cmd --permanent --service=customService --add-source=192.168.1.10
+firewall-cmd --permanent --service=customService --add-source=192.168.1.10/32
+firewall-cmd --permanent --service=customService --add-protocol=udp
+firewall-cmd --info-service=customService 
+firewall-cmd --reload 
+firewall-cmd --info-service=customService 
+firewall-cmd --permanent --service=customService --add-source-port=801/tcp
+firewall-cmd --reload 
+firewall-cmd --info-service=customService 
+systemctl disable --now firewalld.service 
+dnf install iptables-services
+iptables -L -v -n
+systemctl status iptables.service 
+systemctl start iptables.service
+iptables -L -v -n
+ping 192.168.1.82
+ssh 192.168.1.82
+ping 192.168.1.82
+cd 
+cd /home/student/lin2_May/
+git pull
+systemctl disable --now iptables
+systemctl start ipa
+nmtui
+nmcli connection down ens33 ; nmcli connection up ens33 
+systemctl start ipa
+systemctl status ipa.service
+journalctl 
+journalctl -b
+journalctl -u ipa
+systemctl status slapd.service 
+journalctl -xeu ipa.service
+netstat -vatnulp
+systemctl disable --now nginx
+systemctl start ipa
+systemctl status ipa.service
+cd /var/log/
+ls -la 
+cd ipa/
+ls -la
+less -la
+less ipactl.log 
+less messages
+less ../messages
+systemctl httpd status
+systemctl status httpd
+vi /etc/httpd/conf.d/ssl.conf
+systemctl status ipa.service
+netstat -vatnlp | grep 443
+vi /etc/httpd/conf.d/ssl.conf
+systemctl start ipa
+systemctl status ipa.service
+systemctl status firewalld.service 
+systemctl status iptables.service 
+systemctl status nginx
+systemctl status httpd
+grep -ri "443" /etc/httpd/conf.d/*
+vi /etc/httpd/conf.d/nss.conf 
+vi /etc/httpd/conf.d/
+vi /etc/httpd/conf.d/ssl.conf 
+systemctl stop ipa
+systemctl status ipa
+systemctl start ipa
+history
+history | awk '$1 > 864' | cut -c 8- >> /home/student/lin2_May/day5-history.txt
+reboot
+journalctl 
+journalctl -u ipa
+netstat -vatlnp
+netstat -vatlnp | grep LISTEN
+systemctl status nfs-server
+dnf install nfs-server
+dnf provides nfs-server
+dnf provides "*/nfs-server
+dnf provides "*/nfs-server*"
+"
+which showmount
+systemctl start nfs-server.service 
+mkdir /nfs-share
+mkdir -p /nfs-share/{Dev,Prod}
+ls -la /nfs-share
+chgrp student /nfs-share/Dev/
+chgrp student /nfs-share/Prod
+chgrp student /nfs-share/
+chmod 770 /nfs-share/Dev/
+chmod 740 /nfs-share/Prod
+ls -la /nfs-share/
+chmod 750 /nfs-share/Prod
+ls -la /nfs-share/
+systemctl status rpcbind.
+systemctl status rpcbind
+vi /etc/nfs.conf 
+systemctl restart nfs-server.service 
+vi /etc/exports
+exportfs -rav
+showmount -e localhost
+showmount -e 192.168.1.90
+id student
+ls -al /nfs-share/Dev/
+chmod 775 /nfs-share/Dev/
+ls -la /nfs-share
+chmod 777 /nfs-share/Dev/
+ls -la /nfs-share/Dev/
+useradd -m -u 1001 -g 1001 konrad 
+groupadd -g 1001  konrad 
+useradd -m -u 1001 -g 1001 konrad 
+ls -la /nfs-share/Dev/
+vi /etc/exports
+exportfs -rav
+systemctl restart nfs-server
+ipa-getkeytab -p nfs/centos8-client.lab.local@LAB.LOCAL -k /etc/krb5.keytab
+kinit admin
+ipa-getkeytab -p nfs/centos8-client.lab.local@LAB.LOCAL -k /etc/krb5.keytab
+klist
+ipa-getkeytab -p nfs/centos9.lab.local@LAB.LOCAL -k /etc/krb5.keytab
+klist
+ls -la /nfs-share/
+klist -k
+mkdir /secure-share mount -o sec=krb5p centos9:/nfs-share/Prod /secure-share
+mkdir /secure-share;  mount -o sec=krb5p centos9:/nfs-share/Prod /secure-share
+kdestroy 
+kinit admin
+mount -o sec=krb5p centos9:/nfs-share/Prod /secure-share
+klist -k
+ipa-getkeytab -p nfs/centos9.lab.local@LAB.LOCAL -k /etc/krb5.keyta
+kdestroy 
+klist -k
+kinit admin
+ipa-getkeytab -p nfs/centos9.lab.local@LAB.LOCAL -k /etc/krb5.keyta
+ipa-getkeytab -p nfs/centos9.lab.local@LAB.LOCAL -k /etc/krb5.keytab
+mount -o sec=krb5p centos9:/nfs-share/Prod /secure-share
+klist -k
+listprincs
+klist
+mount -o sec=krb5p centos9:/nfs-share/Prod /secure-share/
+less /var/log/ipa/ipactl.log 
+less /var/log/krb5kdc.log 
+cat  /var/log/krb5kdc.log | grep nfs
+dnf install -y samba samba-common samba-client
+systemctl status smb
+systemctl start smb
+systemctl status smb
+journalctl -u smbd
+journalctl -u smb
+groupadd devops
+useradd -G devops alicja
+useradd linda
+id linda
+id alicja
+mkdir /devops
+chgrp devops /devops
+chmod 2770 /devops/
+chown linda dev
+chown linda /dev
+chown linda /devops/
+ls -la /devops/
+mkdir /smb-public
+chown student.student /smb-public
+ls -la
+ls -la /smb-public/
+vi /etc/samba/smb.conf
+testparm
+vi /etc/samba/smb.conf
+testparm
+systemctl restart smb
+smbpasswd --help
+smbpasswd -a linda
+smbpasswd -a alicja
+smbpasswd -a student
+smbstatus 
+man mount 
+cd /home/student/lin2_May/
+ls -la
+git pull
+sestatus 
+df -hT
+mkdir /samba-auto
+vi /root/samba-creds
+chmod 600 /root/samba-creds
+vi /etc/fstab 
+mount /samba-auto
+systemctl daemon-reload
+vi /etc/fstab 
+systemctl daemon-reload
+mount -a
+df -hT
+smbashare
+smbshare
+smbstatus
+vi /etc/fstab 
+cat /root/samba-creds 
+mount /samba-auto/
+mount -o username=linda //192.168.1.90/devops /samba-auto/
+getenforce 
+sestatus 
+vi /etc/selinux/config 
+history 
+history | awk '$1 > 787' | cut -c 8- >> /home/student/lin2_May/day5-history.tx
+vi /home/student/lin2_May/day5-history.tx
+rm /home/student/lin2_May/day5-history.tx
+history | awk '$1 > 787' | cut -c 8- >> /home/student/lin2_May/day5-history.txt

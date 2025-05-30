@@ -1,0 +1,29 @@
+
+#
+# /etc/fstab
+# Created by anaconda on Fri Feb  9 10:49:18 2024
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk/'.
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info.
+#
+# After editing this file, run 'systemctl daemon-reload' to update systemd
+# units generated from this file.
+#
+/dev/mapper/centos9-root /                       xfs     defaults        0 0
+UUID=4116e75d-9a78-42aa-88ba-aebbedf9fd02 /boot                   xfs     defaults        0 0
+/dev/mapper/centos9-home /home                   xfs     defaults        0 0
+/dev/mapper/centos9-tmp /tmp                    xfs     defaults        0 0
+/dev/mapper/centos9-swap none                    swap    defaults        0 0
+
+# Dodatkowe dyski pod aplikacje 1 i 2
+#UUID="8c1697ae-1c32-4fc6-8898-c0714bebab87" /app1 xfs defaults 0 0
+#LABEL=part2 /app2 ext4 defaults 0 0 
+
+#UUID=2dd18869-c8b1-4934-9c2f-28896504413b none swap defaults 0 0
+
+#UUID="86c23ca2-a99c-4a02-a824-510faee60897" /part1 ext4 defaults,ro 0 0
+#LABEL="swap-extra" none swap defaults 0 0
+
+/dev/mapper/my_encrypted_partition /secret xfs defaults 0 0
+
+//192.168.1.90/devops	/samba-auto cifs credentials=/root/samba-creds,_netdev 0 0
