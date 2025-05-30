@@ -557,4 +557,75 @@ history
 history | awk '$1 > 787' | cut -c 8- >> /home/student/lin2_May/day5-history.tx
 vi /home/student/lin2_May/day5-history.tx
 rm /home/student/lin2_May/day5-history.tx
-history | awk '$1 > 787' | cut -c 8- >> /home/student/lin2_May/day5-history.txt
+ls -alZ
+ls -alZ lin2_May/
+ls -laZ /var
+ps -efZ
+ps -efZ | grep ssh
+dnf provides *\sealert
+dnf isntall -y setroubleshoot-server
+dnf install -y setroubleshoot-server
+vi /etc/ssh/sshd_config
+systemctl restart sshd
+systemctl status sshd
+semanage port -l
+ps -efZ | grep sshd
+semanage port -l | sshd
+semanage port -l | grep -i sshd
+semanage port -l | grep -i ssh
+semanage port -a -t ssh_port_t -p tcp 2222
+semanage port -l | grep -i ssh
+systemctl restart sshd
+systemctl status sshd
+less /var/log/messages
+sealert -l 770234a0-4c8c-430a-bb57-283e46e6b002
+dnf install httpd -y
+dnf group install "Basic Web Server"
+vi /etc/hosts
+vi /etc/httpd/conf/httpd.conf
+vi /etc/httpd/conf.d/dashboard.conf
+mkdir /web/dashboard
+mkdir /web/dashboard -p
+vi /web/dashboard/index.html
+systemctl status httpd
+systemctl start httpd
+systemctl status httpd
+vi /etc/httpd/conf.d/dashboard.conf
+vi /etc/hosts
+less /var/log/messages
+sealert -l 4e7c3efd-3b92-48a2-b18f-6208ed8ebcb6
+ls -laZ /var/www/html
+semanage fcontext -l
+semanage fcontext -l | wc -l
+ls -laZ /var/www/html
+semanage fcontext -a -t httpd_sys_content_t "/web/dashboard(/.*)?"
+semanage fcontext -l | grep web/das
+mkdir /web/dashboard/test -p
+touch /web/dashboard/testfile
+ls -laZ /web/dashboard/
+restorecon -Rv /web/dashboard/
+ls -laZ /web/dashboard/
+id -Z
+id student -Z
+su -student
+su - student
+dnf provides *\mariadb
+dnf install -y mariadb-server
+mkdir /app-db
+vi /etc/my.cnf.d/mariadb-server.cnf
+systemctl start mariadb.service
+systemctl status mariadb.service
+chown mysql:mysql /app-db/
+chown -R mysql:mysql /app-db/
+systemctl start mariadb.service
+systemctl status mariadb.service
+ls -laZ /var/lib/mysql/
+less /var/log/messages
+sealert -l d28d209c-817c-4e1e-a2a2-7436080e5ba0
+ls -la /app-db/
+tree /app-db/
+semanage fcontext -a -t mysqld_db_t "/app-db(/.*)?"
+restorecon -Rv /app-db/
+systemctl restart mariadb.service
+systemctl status mariadb.service
+mysql_secure_installation
