@@ -1,0 +1,52 @@
+systemctl start iptables
+iptables -L -v -n
+iptables --help 
+iptables -L -v -n
+iptables -F 
+iptables -L -v -n
+iptables -P INPUT DROP
+iptables -P OUTPUT DROP
+ping wp.pl
+iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+iptables -L -v -n
+iptables -A OUTPUT -m state --state ESTABLISHED,RELATED -j ACCEPT 
+iptables -L -v -n
+iptables -A INPUT -p tcp --dport 53 -j ACCEPT
+iptables -A OUTPUT -p tcp --dport 53 -j ACCEPT 
+iptables -A OUTPUT -p udp --dport 53 -j ACCEPT 
+iptables -A INPUT -p udp --dport 53 -j ACCEPT
+iptables -L -v -n
+ping wp.pl
+iptables -A INPUT -p icmp -j ACCEPT
+iptables -AOUTPUT -p icmp -j ACCEPT
+iptables -L -v -n
+ping wp.pl
+vi /etc/resolv.conf 
+iptables -A OUTPUT -d 192.168.1.1 -j ACCEPT
+ping wp.pl
+iptables -A INPUT -i lo -j ACCEPT 
+iptables -A OUTPU -o lo -j ACCEPT 
+iptables -A OUTPUT -o lo -j ACCEPT 
+ping wp.pl
+iptables -L -v -n
+iptables -I INPUT 2 -m state --state ESTABLISHED,RELATED -j ACCEPT 
+iptables -L -v -n
+ping wp.pl
+iptables-save > /etc/sysconfig/iptables 
+vi /etc/sysconfig/iptables
+iptables-restore < /etc/sysconfig/iptables
+iptables -L -v -n
+ping wp.pl
+iptables -I OUTPUT 4 --dport 443 -j ACCEPT 
+iptables -I OUTPUT 4 -p tcp --dport 443 -j ACCEPT 
+iptables -L -v -n
+ping 192.168.1.90
+ssh 192.168.1.90
+iptables -I OUTPUT 5 -d 192.168.1.90 -j ACCEPT 
+ssh 192.168.1.90
+ssh student@192.168.1.90
+iptables-save > /etc/sysconfig/iptables
+dnf install git -y
+ls
+history
+mkdir lin2_May/iptables; history | awk '$1 > 819' | cut -c 8- > lin2_May/iptables/iptables-history.txt
