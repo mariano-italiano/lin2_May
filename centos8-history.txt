@@ -1,0 +1,42 @@
+kinit admin
+klist
+ipa-getkeytab -p nfs/centos8-client.lab.local@LAB.LOCAL -k /etc/krb5.keytab
+klist -k
+mount -o sec=krb5p centos9:/nfs-share/Prod /nfs-ro
+cd /nfs-ro
+ls -la /nfs-ro
+mount
+ls -la
+ls -la /
+cd /
+cd nfs-ro
+cd /nfs-ro
+less /var/log/messages
+umount /nfs-ro
+df -ht
+df -hT
+mount -o sec=krb5p centos9:/nfs-share/Prod /nfs-ro
+df -hT
+klist
+mkdir /smb1 /smb2
+dnf install samba-client
+dnf install cifs-utils -y
+smbclient -U linda //centos9/devops
+mount -o username=linda //centos9/devops /smb1
+df -hT
+cd /smb1
+ls -la
+touch linda-file
+mkdir lind-dir
+cd
+umount /smb1
+mount -o username=alicja //centos9/devops /smb1
+cd /smb1
+ls -la
+mkdir alicja-dir
+touch alicja
+ls -la
+cd
+umount /smb1
+mount -o username=student //centos9/smb-public /smb1
+
